@@ -1,8 +1,8 @@
 all : lint test run_docker
 
 run_app: lint test
-	cd api; npm start &
-	cd ui; npm start &
+	cd api; npm install; npm start &
+	cd ui; npm install; npm run build; serve -s build &
 
 build:
 	echo 'Building docker images and running'
@@ -17,6 +17,6 @@ test:
 
 lint:
 	echo 'Running Lint report for api'
-	cd api; ./node_modules/.bin/eslint . --fix;
+	cd api; npm install; ./node_modules/.bin/eslint . --fix;
 	echo 'Running Lint report for ui'
-	cd ui; ./node_modules/.bin/eslint . --fix; 
+	cd ui; npm install; ./node_modules/.bin/eslint . --fix; 

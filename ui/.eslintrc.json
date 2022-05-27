@@ -17,7 +17,7 @@
     "plugins": [
         "react"
     ],
-    "ignorePatterns": ["public/"],
+    "ignorePatterns": ["public/", "build/"],
     "rules": {
         "indent": [
             "error",

@@ -4,9 +4,14 @@ import PropTypes from 'prop-types';
 import env from 'react-dotenv';
 
 const getComputedIoUData = (annotationsToDraw, sendDataToParent) => {
-	console.log(annotationsToDraw);
 	//url
-	const postUrl = env.PRODUCTION ? '/api/api/computeIoU': 'http://localhost:8000/api/computeIoU';
+	console.log('Production');
+	console.log(env.PRODUCTION);
+	let postUrl = 'http://localhost:8000/api/computeIoU';
+	if(env.PRODUCTION == 'false'){
+		postUrl = '/api/api/computeIoU';
+	}
+	console.log(postUrl);
 	return fetch(postUrl ,{
 		method: 'POST',
 		body: JSON.stringify({
