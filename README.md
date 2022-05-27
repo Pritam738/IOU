@@ -28,6 +28,8 @@ This two components are stitched together with the help of docker-compose and ng
 The backend uses express to create the rest endpoins. 
 The frontend uses react-konva to create canvas graphics.
 
+The port and the decimal precision can be configured using node environment variable. 
+
 ### API Information
 
 <table>
