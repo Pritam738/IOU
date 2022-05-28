@@ -13,7 +13,7 @@ app.get('/', async (req, res) => {
 	res.end(JSON.stringify(healthInfo));
 });
 
-app.post('/api/computeIoU', async (req, res) => {
+app.post('/computeIoU', async (req, res) => {
 	try{
 		let computeIoU_data = await getReqData(req);
 		// create the computeIoU

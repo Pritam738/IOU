@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { Stage, Layer, Rect} from 'react-konva';
 import PropTypes from 'prop-types';
-import env from 'react-dotenv';
+import envVar from '../env';
 
 const getComputedIoUData = (annotationsToDraw, sendDataToParent) => {
 	//url
-	console.log('Production');
-	console.log(env.PRODUCTION);
-	let postUrl = 'http://localhost:8000/api/computeIoU';
-	if(env.PRODUCTION == 'false'){
-		postUrl = '/api/api/computeIoU';
+	console.log(envVar.DOCKERIZE);
+	let postUrl = '';
+	if (!envVar.DOCKERIZE){
+		postUrl = 'http://localhost:8000';
+	}else{
+		postUrl = '/api';
 	}
-	console.log(postUrl);
-	return fetch(postUrl ,{
+	return fetch(postUrl + '/computeIoU' ,{
 		method: 'POST',
 		body: JSON.stringify({
 			'bbox1': annotationsToDraw[0],

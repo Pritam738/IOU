@@ -9,10 +9,10 @@ describe("GET / ", () => {
     });
 });
 
-describe('POST /api/computeIoU', () => {
+describe('POST /computeIoU', () => {
     it('Check if results when proper inputs were provided ', async () => {
         const response = await request(app)
-        .post('/api/computeIoU')
+        .post('/computeIoU')
         .send(JSON.stringify({
             "bbox1":{"x": 88.02197802197803, "y": 106.47887323943662, "width": 256.15384615384613, "height": 88.7323943661972, "key": 1},
             "bbox2":{"x": 88.02197802197803, "y": 106.47887323943662, "width": 256.15384615384613, "height": 88.7323943661972, "key": 2}
@@ -24,7 +24,7 @@ describe('POST /api/computeIoU', () => {
 
     it('Check if results when improper inputs were provided ', async () => {
         const response = await request(app)
-        .post('/api/computeIoU')
+        .post('/computeIoU')
         .send(JSON.stringify({
             "bbox1":{"x": 88.02197802197803, "y": 106.47887323943662, "height": 88.7323943661972, "key": 1},
             "bbox2":{"x": 88.02197802197803, "y": 106.47887323943662, "width": 256.15384615384613, "height": 88.7323943661972, "key": 2}
@@ -35,7 +35,7 @@ describe('POST /api/computeIoU', () => {
 
     it('Check if results when improper json were provided ', async () => {
         const response = await request(app)
-        .post('/api/computeIoU')
+        .post('/computeIoU')
         .send('{\
             "bbox1":{"x": 88.02197802197803, "y": 106.47887323943662, "width": 256.15384615384613, "height": 88.7323943661972, "key":},\
             "bbox2":{"x": 88.02197802197803, "y": 106.47887323943662, "width": 256.15384615384613, "height": 88.7323943661972, "key": 2}\
